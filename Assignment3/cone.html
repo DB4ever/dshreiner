@@ -1,71 +1,34 @@
-//
-//  initShaders.js
-//
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../Common/webgl-utils.js"></script>
 <script src="../Common/initShaders.js"></script>
 <script src="../Common/Cone.js"></script>
 <script src="cone.js"></script>
+<script id="Cone-vertex-shader" type="x-Shader/x-vertex">
 attribute vec4 vPosition;
 
-void Cone-vertex-shader() 
+void main() 
 {
      gl_Position = vPosition;
 }
+</script>
+<script id="Cone-fragment-shader" type="x-shader/x-fragment">
 
-void Cone-fragment-shader()
+precision highp float;
+
+varying vec4 fColor;
+
+void main()
 {
     gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
+</script>
 
-function initShaders( gl, vertexShaderId, fragmentShaderId )
-{
-    var vertShdr;
-    var fragShdr;
-
-    var vertElem = document.getElementById( vertexShaderId );
-    if ( !vertElem ) { 
-        alert( "Unable to load vertex shader " + vertexShaderId );
-        return -1;
-    }
-    else {
-        vertShdr = gl.createShader( gl.VERTEX_SHADER );
-        gl.shaderSource( vertShdr, vertElem.text );
-        gl.compileShader( vertShdr );
-        if ( !gl.getShaderParameter(vertShdr, gl.COMPILE_STATUS) ) {
-            var msg = "Vertex shader failed to compile.  The error log is:"
-        	+ "<pre>" + gl.getShaderInfoLog( vertShdr ) + "</pre>";
-            alert( msg );
-            return -1;
-        }
-    }
-
-    var fragElem = document.getElementById( fragmentShaderId );
-    if ( !fragElem ) { 
-        alert( "Unable to load vertex shader " + fragmentShaderId );
-        return -1;
-    }
-    else {
-        fragShdr = gl.createShader( gl.FRAGMENT_SHADER );
-        gl.shaderSource( fragShdr, fragElem.text );
-        gl.compileShader( fragShdr );
-        if ( !gl.getShaderParameter(fragShdr, gl.COMPILE_STATUS) ) {
-            var msg = "Fragment shader failed to compile.  The error log is:"
-        	+ "<pre>" + gl.getShaderInfoLog( fragShdr ) + "</pre>";
-            alert( msg );
-            return -1;
-        }
-    }
-
-    var program = gl.createProgram();
-    gl.attachShader( program, vertShdr );
-    gl.attachShader( program, fragShdr );
-    gl.linkProgram( program );
-    
-    if ( !gl.getProgramParameter(program, gl.LINK_STATUS) ) {
-        var msg = "Shader program failed to link.  The error log is:"
-            + "<pre>" + gl.getProgramInfoLog( program ) + "</pre>";
-        alert( msg );
-        return -1;
-    }
-
-    return program;
-}
+</head>
+<body>
+<canvas id="webgl-canvas" width="512" height="512" style="background-color: #0000FF"></canvas>
+</body>
+</html>
