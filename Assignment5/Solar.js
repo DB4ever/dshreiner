@@ -163,8 +163,7 @@ function render() {
   planet.render();
   ms.pop();
   
-  
-  name = "Moon";
+  name = "Mercury";
   planet = Planets[name];
   data = SolarSystem[name];
   
@@ -180,7 +179,8 @@ function render() {
   planet.render();
   ms.pop();
   
-  name = "Mercury";
+  
+  name = "Moon";
   planet = Planets[name];
   data = SolarSystem[name];
   
