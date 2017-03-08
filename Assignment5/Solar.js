@@ -150,11 +150,11 @@ function render() {
   name = "Earth";
   planet = Planets[name];
   data = SolarSystem[name];
-  
+  ms.push();
   ms.rotate(time / data.year, [0, 0, 1]);
   ms.translate(data.distance, 0, 0);
   
-  ms.push();
+  
   ms.scale(data.radius);
   gl.useProgram(planet.program);
   gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
@@ -180,14 +180,15 @@ function render() {
   planet.render();
   ms.pop();
  
+  
     name = "Mercury";
   planet = Planets[name];
   data = SolarSystem[name];
-  
+  ms.push();
   ms.rotate(time / data.year, [0, 0, 2]);
   ms.translate(data.distance, 0, 0);
   
-  ms.push();
+  
   ms.scale(data.radius);
   gl.useProgram(planet.program);
   gl.uniformMatrix4fv(planet.uniforms.MV, false, flatten(ms.current()));
