@@ -167,7 +167,7 @@ function render() {
   planet = Planets[name];
   data = SolarSystem[name];
   
-  ms.rotate(time / data.year, [0, 0, 1]);
+  ms.rotate(time / data.year, [0, 0, 2]);
   ms.translate(data.distance, 0, 0);
   
   ms.push();
