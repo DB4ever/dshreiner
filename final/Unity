@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class PlayMovie : MonoBehaviour {
+
+	// Use this for initialization
+	void Update() {
+
+        // Find the movie texture attached to this object.  In this case,
+        // the texture was applied in the editor by dragging-and-dropping
+        // the file onto the object. 
+        MovieTexture movieTexture =
+            (MovieTexture) GetComponent<Renderer>().material.mainTexture;
+
+        // this line causes the movie texture to loop
+        movieTexture.loop = true;
+
+        // this line of code will make the Movie Texture begin playing.
+        // Since the movie is going to loop, there's no need to do anything
+        // in Unity's Update() function (at least for the movie texture.)
+        movieTexture.Play();
+        
+    
+    }
+}
